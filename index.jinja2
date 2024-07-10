@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain CI</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+<style>
+    body {
+        margin: 0 auto;
+        max-width: 600px;
+    }
+</style>
+    <table>
+        <thead>
+            <tr>
+                <th>Hash</th>
+                <th>Test</th>
+                <th>Deploy</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commit in commits %}
+            <tr>
+                <td>{{ commit.sha }}</td>
+                <td>{% if commit.tests_ok %}✅{% else %}❌{% endif %}</td>
+                <td>{% if commit.deploy_ok %}✅{% else %}❌{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
